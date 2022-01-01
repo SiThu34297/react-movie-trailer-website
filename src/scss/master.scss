@@ -1,0 +1,18 @@
+$enable-rounded: false;
+$indigo-900: #140330;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "./headerbanner.scss";
+@import "./home.scss";
+@import "./popularmovies.scss";
+@import "./moviedetail.scss";
+
+.navbar {
+  padding: 10px;
+}
+.bg-indigo {
+  background-color: $indigo-900;
+}
+.navbar-collapse {
+  flex-grow: 0;
+}

@@ -1,0 +1,18 @@
+.p-movie-name {
+  font-size: 10px;
+}
+@include media-breakpoint-up(sm) {
+  .p-movie-name {
+    font-size: 15px;
+  }
+}
+@include media-breakpoint-up(md) {
+  .p-movie-name {
+    font-size: 20px;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .p-movie-name {
+    font-size: 20px;
+  }
+}
