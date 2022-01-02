@@ -1,6 +1,6 @@
 import Home from "./Home.js";
 import MovieDetail from "./components/MovieDetail.js";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 export default function App() {
   return (
     <Routes>

@@ -78,6 +78,7 @@ export default function HeaderBanner() {
                 width="100%"
                 height="400"
                 frameBorder="0"
+                title={title}
                 src={`https://www.youtube.com/embed/${video}`}
               ></iframe>
             </div>

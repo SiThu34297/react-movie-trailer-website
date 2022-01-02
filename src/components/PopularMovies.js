@@ -1,6 +1,5 @@
 import React from "react";
 import tmdbApi, { movieType } from "../config/tmdbApi.js";
-import apiConfig from "../config/apiConfig.js";
 import { Link } from "react-router-dom";
 
 export default function PopularMovies() {

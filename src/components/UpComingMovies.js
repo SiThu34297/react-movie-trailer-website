@@ -1,7 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import tmdbApi, { movieType } from "../config/tmdbApi.js";
-import apiConfig from "../config/apiConfig.js";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
