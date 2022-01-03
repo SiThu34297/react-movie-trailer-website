@@ -27,10 +27,10 @@ export default function PopularMovies() {
   return (
     <div className="container">
       <h5 className="pt-5 pb-3 px-2">Popular Movies</h5>
-      <div className="row row-cols-3 row-cols-md-5">
+      <div className="row row-cols-3 row-cols-md-5 pb-3">
         {movies.map((m) => {
           return (
-            <div className="col pb-5" key={m.id}>
+            <div className="col" key={m.id}>
               <Link to={`movie/${m.id}`}>
                 <img
                   src={`https://image.tmdb.org/t/p/w220_and_h330_face/${m.poster_path}`}
@@ -49,6 +49,17 @@ export default function PopularMovies() {
             </div>
           );
         })}
+      </div>
+      <div className="text-center">
+        <Link
+          to="/movies"
+          className="btn btn-sm btn-outline-dark text-white mb-5"
+        >
+          See More
+          <span className="ms-2">
+            <i className="fas fa-angle-double-right"></i>
+          </span>
+        </Link>
       </div>
     </div>
   );
