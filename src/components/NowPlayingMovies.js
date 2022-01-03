@@ -67,7 +67,7 @@ export default function NowPlayingMovies() {
               <SwiperSlide key={movie.id}>
                 <Link to={`movie/${movie.id}`}>
                   <img
-                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                    src={`https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}`}
                     alt="poster"
                     className="card-img"
                   />

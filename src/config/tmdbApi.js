@@ -11,6 +11,10 @@ const tmdbApi = {
     const url = "movie/" + movieType[type];
     return axiosClient.get(url, params);
   },
+  searchMovies: (params) => {
+    const url = "search/movie/";
+    return axiosClient.get(url, params);
+  },
   getMovieDetail: (movie_id, params) => {
     const url = "movie/" + movie_id;
     return axiosClient.get(url, params);

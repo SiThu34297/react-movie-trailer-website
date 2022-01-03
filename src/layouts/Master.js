@@ -23,6 +23,9 @@ export default function Master({ children }) {
               <Link className="nav-link active" to="/">
                 Home
               </Link>
+              <Link className="nav-link active" to="/movies">
+                Movies
+              </Link>
             </div>
           </div>
         </div>

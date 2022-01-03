@@ -33,7 +33,7 @@ export default function PopularMovies() {
             <div className="col pb-5" key={m.id}>
               <Link to={`movie/${m.id}`}>
                 <img
-                  src={`https://image.tmdb.org/t/p/w440_and_h660_face/${m.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w220_and_h330_face/${m.poster_path}`}
                   alt="poster"
                   className="img-fluid"
                 />
