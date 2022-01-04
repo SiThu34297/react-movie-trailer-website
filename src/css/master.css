@@ -10950,6 +10950,10 @@ body {
     font-size: 20px;
   }
 }
+.modal-content-bg {
+  background-color: #140330;
+}
+
 .navbar {
   padding: 10px;
 }

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import "swiper/css";
 // import Swiper core and required modules
 import SwiperCore, { Autoplay } from "swiper";
-
+import VideoModal from "./VideoModal.js";
 // install Swiper modules
 SwiperCore.use([Autoplay]);
 
@@ -16,6 +16,7 @@ export default function HeaderBanner() {
   const [movies, setMovies] = React.useState([]);
   const [video, setVideo] = React.useState("");
   const [title, setTitle] = React.useState("");
+  const [showModal, setShowModal] = React.useState(false);
 
   React.useEffect(() => {
     let apiCall = true;
@@ -38,7 +39,8 @@ export default function HeaderBanner() {
     };
   }, []);
 
-  const handleModal = (id) => {
+  const openModal = (id) => {
+    setShowModal(true);
     const getVideo = async () => {
       const params = { append_to_response: "videos" };
       try {
@@ -52,39 +54,17 @@ export default function HeaderBanner() {
     getVideo();
   };
 
-  const handleClose = () => {
-    setVideo("");
-    setTitle("");
-  };
-
   return (
     <div>
-      <div className="modal fade" id="movie">
-        <div className="modal-dialog modal-dialog-centered modal-lg">
-          <div className="modal-content bg-dark">
-            <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">
-                {title}
-              </h5>
-              <button
-                onClick={handleClose}
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-              />
-            </div>
-            <div className="modal-body">
-              <iframe
-                width="100%"
-                height="400"
-                frameBorder="0"
-                title={title}
-                src={`https://www.youtube.com/embed/${video}`}
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Modal */}
+      {showModal ? (
+        <VideoModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          video={video}
+          title={title}
+        />
+      ) : null}
       <Swiper
         autoplay={{
           delay: 2500,
@@ -105,11 +85,9 @@ export default function HeaderBanner() {
                   <p className="py-md-4 py-1">{movie.overview}</p>
                   <button
                     onClick={() => {
-                      handleModal(movie.id);
+                      openModal(movie.id);
                     }}
                     className="btn btn-light btn-lg  me-3"
-                    data-bs-toggle="modal"
-                    data-bs-target="#movie"
                   >
                     Watch Trailer
                     <span className="ms-2">

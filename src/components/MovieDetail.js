@@ -6,12 +6,13 @@ import dateFormat from "dateformat";
 import Loader from "./Loader.js";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
+import VideoModal from "./VideoModal.js";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "../css/master.css";
 // import Swiper core and required modules
 import SwiperCore, { Autoplay, Pagination } from "swiper";
-
 // install Swiper modules
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -22,16 +23,18 @@ export default function MovieDetail() {
   const [cast, setCast] = React.useState([]);
   const [similar, setSimilar] = React.useState([]);
   const [video, setVideo] = React.useState("");
+  const [showModal, setShowModal] = React.useState(false);
 
   React.useEffect(() => {
     setLoader(true);
     let apiCall = true;
     if (apiCall) {
       const getMovie = async () => {
-        const params = {};
+        const params = { append_to_response: "videos" };
         try {
           const response = await tmdbApi.getMovieDetail(id, { params });
           setMovie(response);
+          setVideo(response.videos.results[0].key);
           setLoader(false);
         } catch {
           console.log("error");
@@ -66,50 +69,21 @@ export default function MovieDetail() {
     };
   }, [id]);
 
-  const handleModal = () => {
-    const getVideo = async () => {
-      const params = {};
-      try {
-        const response = await tmdbApi.getVideo(id, { params });
-        setVideo(response.results[0].key);
-      } catch {
-        console.log("error");
-      }
-    };
-    getVideo();
+  const openModal = () => {
+    setShowModal(true);
   };
-  const handleClose = () => {
-    setVideo("");
-  };
+
   return (
     <div>
       {/* Modal */}
-      <div className="modal fade" id="movie">
-        <div className="modal-dialog modal-dialog-centered modal-lg">
-          <div className="modal-content bg-dark">
-            <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">
-                {movie.title}
-              </h5>
-              <button
-                onClick={handleClose}
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-              />
-            </div>
-            <div className="modal-body">
-              <iframe
-                width="100%"
-                height="400"
-                frameBorder="0"
-                title={video}
-                src={`https://www.youtube.com/embed/${video}`}
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
+      {showModal ? (
+        <VideoModal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          video={video}
+          title={movie.title}
+        />
+      ) : null}
       <Master>
         {loader ? (
           <Loader />
@@ -144,12 +118,7 @@ export default function MovieDetail() {
                   </span>
                 </div>
                 <p className="pb-2">{movie.overview}</p>
-                <button
-                  onClick={handleModal}
-                  data-bs-toggle="modal"
-                  data-bs-target="#movie"
-                  className="btn btn-warning mb-4"
-                >
+                <button className="btn btn-warning mb-4" onClick={openModal}>
                   Watch Trailer
                   <span className="ms-2">
                     <i className="fas fa-play-circle"></i>
