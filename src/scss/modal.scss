@@ -1,3 +1,9 @@
 .modal-content-bg {
   background-color: $indigo-900;
 }
+.modal-header {
+  border-bottom: none;
+}
+.modal-body {
+  padding: 0px;
+}

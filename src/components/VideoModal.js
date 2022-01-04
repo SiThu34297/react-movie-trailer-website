@@ -21,7 +21,7 @@ export default function VideoModal({ showModal, setShowModal, video, title }) {
               height="400"
               frameBorder="0"
               title={title}
-              src={`https://www.youtube.com/embed/${video}`}
+              src={`https://www.youtube-nocookie.com/embed/${video}`}
             ></iframe>
           </div>
         </div>
