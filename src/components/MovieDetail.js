@@ -130,17 +130,21 @@ export default function MovieDetail() {
                     return (
                       <div className="col-3" key={d.id}>
                         {d.profile_path ? (
-                          <img
-                            src={`https://image.tmdb.org/t/p/original/${d.profile_path}`}
-                            alt="poster"
-                            className="img-fluid mb-2"
-                          />
+                          <Link to={"/actor/" + d.id}>
+                            <img
+                              src={`https://image.tmdb.org/t/p/original/${d.profile_path}`}
+                              alt="poster"
+                              className="img-fluid mb-2"
+                            />
+                          </Link>
                         ) : (
-                          <img
-                            src={`https://via.placeholder.com/400x600/000000/?text=${d.name}`}
-                            alt="poster"
-                            className="img-fluid mb-2"
-                          />
+                          <Link to={"/actor/" + d.id}>
+                            <img
+                              src={`https://via.placeholder.com/400x600/000000/?text=${d.name}`}
+                              alt="poster"
+                              className="img-fluid mb-2"
+                            />
+                          </Link>
                         )}
                         <span className="h-movie-detail">{d.name}</span>
                       </div>
