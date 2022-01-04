@@ -1,3 +1,6 @@
+.modal {
+  animation: modalSlide 0.5s ease-out forwards;
+}
 .modal-content-bg {
   background-color: $indigo-900;
 }
@@ -6,4 +9,14 @@
 }
 .modal-body {
   padding: 0px;
+}
+@keyframes modalSlide {
+  from {
+    transform: translateX(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
