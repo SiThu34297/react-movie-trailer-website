@@ -9,6 +9,7 @@ export default function ActorDetail() {
   let { id } = useParams();
   const [actor, setActor] = React.useState([]);
   const [credits, setCredits] = React.useState([]);
+
   React.useEffect(() => {
     let apiCall = true;
     if (apiCall) {
@@ -28,7 +29,7 @@ export default function ActorDetail() {
     return () => {
       apiCall = false;
     };
-  }, []);
+  }, [id]);
   return (
     <Master>
       <div className="container">
