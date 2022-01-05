@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import tmdbApi from "../config/tmdbApi.js";
 import dateFormat from "dateformat";
 import Loader from "./Loader.js";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import VideoModal from "./VideoModal.js";
 // Import Swiper styles
