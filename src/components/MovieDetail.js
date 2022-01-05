@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import tmdbApi from "../config/tmdbApi.js";
 import dateFormat from "dateformat";
 import Loader from "./Loader.js";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import VideoModal from "./VideoModal.js";
 // Import Swiper styles
@@ -18,6 +18,8 @@ SwiperCore.use([Autoplay, Pagination]);
 
 export default function MovieDetail() {
   let { id } = useParams();
+  let location = useLocation();
+
   const [movie, setMovie] = React.useState([]);
   const [loader, setLoader] = React.useState(true);
   const [cast, setCast] = React.useState([]);
@@ -67,7 +69,7 @@ export default function MovieDetail() {
     return () => {
       apiCall = false;
     };
-  }, [id]);
+  }, [id, location]);
 
   const openModal = () => {
     setShowModal(true);
