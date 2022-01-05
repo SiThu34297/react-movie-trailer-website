@@ -18,7 +18,6 @@ SwiperCore.use([Autoplay, Pagination]);
 
 export default function MovieDetail() {
   let { id } = useParams();
-  let location = useLocation();
 
   const [movie, setMovie] = React.useState([]);
   const [loader, setLoader] = React.useState(true);
@@ -69,7 +68,7 @@ export default function MovieDetail() {
     return () => {
       apiCall = false;
     };
-  }, [id, location]);
+  }, [id]);
 
   const openModal = () => {
     setShowModal(true);
